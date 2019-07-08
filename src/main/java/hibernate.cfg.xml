@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="">
+  <!-- <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">1234</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/titulaciondb</property>
+  <property name="hibernate.connection.username">root</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>-->
+  <mapping class="pe.edu.unsch.entities.Bachiller"/>
+  <mapping class="pe.edu.unsch.entities.Comision"/>
+  <mapping class="pe.edu.unsch.entities.ComisionDocente"/>
+  <mapping class="pe.edu.unsch.entities.Decano"/>
+  <mapping class="pe.edu.unsch.entities.Docente"/>
+  <mapping class="pe.edu.unsch.entities.Escuela"/>
+  <mapping class="pe.edu.unsch.entities.Facultad"/>
+  <mapping class="pe.edu.unsch.entities.Perfil"/>
+  <mapping class="pe.edu.unsch.entities.PerfilOpcion"/>
+  <mapping class="pe.edu.unsch.entities.Secretario"/>
+  <mapping class="pe.edu.unsch.entities.Solicitud"/>
+  <mapping class="pe.edu.unsch.entities.SolicitudAprobacion"/>
+  <mapping class="pe.edu.unsch.entities.SolicitudBorradora"/>
+  <mapping class="pe.edu.unsch.entities.SolicitudPlanTesis"/>
+  <mapping class="pe.edu.unsch.entities.SolicitudSustentacion"/>
+  <mapping class="pe.edu.unsch.entities.SolicitudAsesoramiento"/>
+  <mapping class="pe.edu.unsch.entities.Usuario"/>
+  <mapping class="pe.edu.unsch.entities.UsuarioPerfil"/>
+ </session-factory>
+</hibernate-configuration>
