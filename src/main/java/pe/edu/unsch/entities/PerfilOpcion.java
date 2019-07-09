@@ -1,9 +1,11 @@
 package pe.edu.unsch.entities;
-// Generated 08/07/2019 12:10:03 AM by Hibernate Tools 5.1.7.Final
+// Generated 08/07/2019 08:40:20 PM by Hibernate Tools 5.1.7.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,28 +18,45 @@ import javax.persistence.Table;
 @Table(name = "perfil_opcion", catalog = "titulaciondb")
 public class PerfilOpcion implements java.io.Serializable {
 
-	private int idperfilOpcion;
+	private Integer idperfilOpcion;
+	private Opcion opcion;
 	private Perfil perfil;
-	private byte estado;
+	private Byte estado;
 
 	public PerfilOpcion() {
 	}
 
-	public PerfilOpcion(int idperfilOpcion, Perfil perfil, byte estado) {
-		this.idperfilOpcion = idperfilOpcion;
+	public PerfilOpcion(Opcion opcion, Perfil perfil) {
+		this.opcion = opcion;
+		this.perfil = perfil;
+	}
+
+	public PerfilOpcion(Opcion opcion, Perfil perfil, Byte estado) {
+		this.opcion = opcion;
 		this.perfil = perfil;
 		this.estado = estado;
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
 	@Column(name = "idperfil_opcion", unique = true, nullable = false)
-	public int getIdperfilOpcion() {
+	public Integer getIdperfilOpcion() {
 		return this.idperfilOpcion;
 	}
 
-	public void setIdperfilOpcion(int idperfilOpcion) {
+	public void setIdperfilOpcion(Integer idperfilOpcion) {
 		this.idperfilOpcion = idperfilOpcion;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "idopcion", nullable = false)
+	public Opcion getOpcion() {
+		return this.opcion;
+	}
+
+	public void setOpcion(Opcion opcion) {
+		this.opcion = opcion;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -50,12 +69,12 @@ public class PerfilOpcion implements java.io.Serializable {
 		this.perfil = perfil;
 	}
 
-	@Column(name = "estado", nullable = false)
-	public byte getEstado() {
+	@Column(name = "estado")
+	public Byte getEstado() {
 		return this.estado;
 	}
 
-	public void setEstado(byte estado) {
+	public void setEstado(Byte estado) {
 		this.estado = estado;
 	}
 
