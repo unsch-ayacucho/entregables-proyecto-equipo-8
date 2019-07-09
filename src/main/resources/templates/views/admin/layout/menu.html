@@ -27,7 +27,7 @@
 		<div class="menu_section">
 			<h3>General</h3>
 			<ul class="nav side-menu">
-				<li th:each="modulo : ${session.moduloPorPerfil}">
+				<li th:each="modulo : ${session.modulosPorPerfil}">
 					<a><i class="fa" th:classappend="${modulo.icono}"></i>
 						<span th:text="${modulo.nombre}"></span>
 						<span class="fa fa-chevron-down"></span>
