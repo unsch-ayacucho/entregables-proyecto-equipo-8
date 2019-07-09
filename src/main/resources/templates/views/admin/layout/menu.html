@@ -33,9 +33,13 @@
 						<span class="fa fa-chevron-down"></span>
 					</a>
 					<ul class="nav child_menu">
-						<li><a href="#">Usuarios</a></li>
-						<li><a href="#">Perfiles</a></li>
-					</ul></li>
+						<th:block data-th-each="submodulo : ${session.submodulosPorPerfil}">
+							<th:block data-th-if="${modulo.idmodulo} == ${submodulo.idmodulo}">
+								<li><a href="#" th:text="${submodulo.nombre}"></a></li>
+							</th:block>
+						</th:block>
+					</ul>
+				</li>
 			</ul>
 		</div>
 
