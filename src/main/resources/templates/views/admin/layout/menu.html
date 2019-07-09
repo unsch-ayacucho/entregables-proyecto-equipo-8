@@ -1,7 +1,7 @@
 <div class="left_col scroll-view">
 	<div class="navbar nav_title" style="border: 0;">
 		<a href="index.html" class="site_title"><i class="fa fa-paw"></i>
-			<span>Evaluación 360°</span></a>
+			<span>EvaluaciÃ³n 360Â°</span></a>
 	</div>
 
 	<div class="clearfix"></div>
@@ -15,7 +15,7 @@
 		</div>
 		<div class="profile_info">
 			<span>Bienvenido,</span>
-			<h2>fbarrientos</h2>
+			<h2 th:text="${session.usuario}"></h2>
 		</div>
 	</div>
 	<!-- /menu profile quick info -->
@@ -27,41 +27,14 @@
 		<div class="menu_section">
 			<h3>General</h3>
 			<ul class="nav side-menu">
-				<li><a><i class="fa fa-th-list"></i> Administración <span
-						class="fa fa-chevron-down"></span></a>
+				<li th:each="modulo : ${session.moduloPorPerfil}">
+					<a><i class="fa" th:classappend="${modulo.icono}"></i>
+						<span th:text="${modulo.nombre}"></span>
+						<span class="fa fa-chevron-down"></span>
+					</a>
 					<ul class="nav child_menu">
 						<li><a href="#">Usuarios</a></li>
 						<li><a href="#">Perfiles</a></li>
-					</ul></li>
-				<li><a><i class="fa fa-clone"></i> Organización <span
-						class="fa fa-chevron-down"></span></a>
-					<ul class="nav child_menu">
-						<li><a href="#">Facultades</a></li>
-						<li><a href="#">Departamentos</a></li>
-						<li><a href="#">Áreas</a></li>
-						<li><a href="#">Escuelas</a></li>
-						<li><a href="#">Stocks</a></li>
-					</ul></li>
-				<li><a><i class="fa fa-globe"></i> Administración RH <span
-						class="fa fa-chevron-down"></span></a>
-					<ul class="nav child_menu">
-						<li><a href="#">Perfil Puesto</a></li>
-						<li><a href="#">Cargo</a></li>
-					</ul></li>
-				<li><a><i class="fa fa-pencil"></i> Evaluación 360° <span
-						class="fa fa-chevron-down"></span></a>
-					<ul class="nav child_menu">
-						<li><a href="#">Competencias</a></li>
-						<li><a href="#">Comportamientos</a></li>
-						<li><a href="#">Evaluación 360°</a></li>
-					</ul></li>
-				<li><a><i class="fa fa-bar-chart-o"></i> Estadísticas<span
-						class="fa fa-chevron-down"></span></a>
-					<ul class="nav child_menu">
-						<li><a href="#">Clasificación general</a></li>
-						<li><a href="#">Clasificación por Facultad</a></li>
-						<li><a href="#">Clasificación por Departamento</a></li>
-						<li><a href="#">Clasificación por Escuela</a></li>
 					</ul></li>
 			</ul>
 		</div>

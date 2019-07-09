@@ -13,6 +13,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	@Override
 	public Usuario login(String usuario, String password) {
 		return (Usuario) entityManager
 						.createQuery("from Usuario "
