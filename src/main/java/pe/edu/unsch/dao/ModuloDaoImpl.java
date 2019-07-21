@@ -40,4 +40,9 @@ public class ModuloDaoImpl implements ModuloDao {
 					.createQuery("from Modulo", Modulo.class)
 					.getResultList();
 	}
+	
+	@Override
+	public void insertar(Modulo modulo) {
+		entityManager.persist(modulo);
+	}
 }

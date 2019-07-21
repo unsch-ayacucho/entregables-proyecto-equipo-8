@@ -9,5 +9,7 @@ public interface ModuloDao {
 	public List<Modulo> listarPorPerfil(String usuario);
 	
 	public List<Modulo> listarModulos();
+	
+	public void insertar(Modulo modulo);
 
 }

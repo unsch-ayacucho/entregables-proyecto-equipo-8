@@ -10,4 +10,6 @@ public interface ModuloService {
 	
 	List<Modulo> listarModulos();
 	
+	public void insertar(Modulo modulo);
+	
 }

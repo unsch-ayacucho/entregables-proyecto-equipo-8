@@ -29,4 +29,8 @@ public class ModuloServiceImpl implements ModuloService {
 		return moduloDao.listarModulos();
 	}
 	
+	@Override
+	public void insertar(Modulo modulo) {
+		moduloDao.insertar(modulo);
+	}
 }
