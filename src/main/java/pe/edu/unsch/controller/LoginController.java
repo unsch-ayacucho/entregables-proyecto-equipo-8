@@ -19,7 +19,13 @@ public class LoginController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
-
+	
+	@Autowired
+	private ModuloService moduloService;
+	
+	@Autowired
+	private SubmoduloService submoduloService;
+	
 	@GetMapping({"/", "/login"})
 	public String login(Model model) {
 		model.addAttribute("title", "Login | Evaluación 360°");
@@ -37,6 +43,11 @@ public class LoginController {
 			return "redirect:/login";
 		} else {
 			session.setAttribute("usuario", user.getUsuario());
+			
+			session.setAttribute("modulosPorPerfil", moduloService.listarPorPerfil(user.getUsuario()));
+			
+			session.setAttribute("submodulosPorPerfil", submoduloService.listarPorPerfil(user.getUsuario()));
+			
 			return "redirect:/admin/home";
 		}
 	}
