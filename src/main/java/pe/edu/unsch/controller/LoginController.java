@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import pe.edu.unsch.entities.Usuario;
 import pe.edu.unsch.service.ModuloService;
+import pe.edu.unsch.service.SubmoduloService;
 import pe.edu.unsch.service.UsuarioService;
 
 @Controller
@@ -21,6 +22,9 @@ public class LoginController {
 	
 	@Autowired
 	private ModuloService moduloService;
+	
+	@Autowired
+	private SubmoduloService submoduloService;
 
 	@GetMapping({"/", "/login"})
 	public String login(Model model) {
@@ -39,9 +43,11 @@ public class LoginController {
 			return "redirect:/login";
 		} else {
 			session.setAttribute("usuario", user.getUsuario());
-			
+			//modulos de usuario en sesion
 			session.setAttribute("modulosPorPerfil", moduloService.listarPorPerfil(user.getUsuario()));
-			
+			//submodulos de usuario en sesion
+			session.setAttribute("submodulosPorPerfil", submoduloService.listarPorPerfil(user.getUsuario()));
+//			
 			return "redirect:/admin/home";
 		}
 	}

@@ -23,15 +23,12 @@
 <!-- 							<span th:classappend="${modulo.icono}"></span> -->
 						</a>
 							<ul class="dropdown-menu pull-left">
-							<li class=" dropdown-submenu">
+									
+									<th:block data-th-each="submodulo : ${session.submodulosPorPerfil}">
+										<th:block data-th-if="${modulo.idmodulo} == ${submodulo.idmodulo}">
+										<li><a href="#" th:text="${submodulo.nombre}"></a></li> </th:block>
+										</th:block>
 								
-								<li class="dropdown-menu">
-									<li>
-										<a href="#">Usuarios</a>
-									</li>
-									<li>
-										<a href="#">Perfiles</a>
-									</li>
 								</ul>
 						</li>
 					</ul>
