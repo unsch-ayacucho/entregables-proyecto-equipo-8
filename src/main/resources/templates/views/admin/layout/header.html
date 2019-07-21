@@ -309,8 +309,8 @@
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<li class="dropdown dropdown-user dropdown-dark">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<img alt="" class="img-circle" th:src="@{/admin/layout3/img/avatar9.jpg}">
-						<span class="username username-hide-mobile">Nick</span>
+						<img alt="" class="img-circle" th:src="@{/admin/layout3/img/avatar9.jpg}" th:text="${session.usuario}">
+						<span class="username username-hide-mobile"></span>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">
 							<li>
