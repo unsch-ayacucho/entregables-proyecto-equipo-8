@@ -33,4 +33,11 @@ public class ModuloDaoImpl implements ModuloDao {
 				.getResultList();
 	}
 	
+	@Override
+	public List<Modulo> listarModulos() {
+		
+		return (List<Modulo>) entityManager
+					.createQuery("from Modulo", Modulo.class)
+					.getResultList();
+	}
 }

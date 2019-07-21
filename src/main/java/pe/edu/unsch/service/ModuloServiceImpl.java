@@ -22,5 +22,11 @@ public class ModuloServiceImpl implements ModuloService {
 	public List<Modulo> listarPorPerfil(String usuario) {
 		return moduloDao.listarPorPerfil(usuario);
 	}
+
+	@Override
+	public List<Modulo> listarModulos() {
+		
+		return moduloDao.listarModulos();
+	}
 	
 }

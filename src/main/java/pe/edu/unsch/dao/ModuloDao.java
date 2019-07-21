@@ -7,5 +7,7 @@ import pe.edu.unsch.entities.Modulo;
 public interface ModuloDao {
 	
 	public List<Modulo> listarPorPerfil(String usuario);
+	
+	public List<Modulo> listarModulos();
 
 }

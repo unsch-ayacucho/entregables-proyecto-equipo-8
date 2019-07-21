@@ -8,4 +8,6 @@ public interface ModuloService {
 
 	public List <Modulo> listarPorPerfil(String usuario);
 	
+	List<Modulo> listarModulos();
+	
 }

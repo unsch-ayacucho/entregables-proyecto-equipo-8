@@ -4,6 +4,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <div th:replace="views/admin/layout/layout :: head"></div>
+<link href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -152,11 +153,116 @@
 		</div>
 	</div>
 	<!-- END PAGE HEAD -->
-	<!-- page content -->
-	<div class="right_col" role="main">
-		<h1>Hola vista modulo</h1>
+	<!-- BEGIN PAGE CONTENT -->
+	<div class="page-content">
+	<div class="panel panel-default col-xs-12 col-sm-12 col-md-12" style="border: 0.05px solid #ECECEC;">
+  		
+  		<div class="panel-body">
+  			<button id="btnAgregar" type="button" class="btn btn-primary" data-toggle="modal">Nuevo</button>
+  		
+  		</div>
+  			
+  		<br>
+  		<div class="panel-body center-block " style="width:50%;">
+			<div class="table-responsive" id="panel-table-establecimiento">
+		      <table class="table table-bordered table-hover small tablaEstablecimiento" id="tablaEstablecimiento" style="width:100%">
+		
+				    <thead>
+				        <tr>
+				            <th class="tg-baqh">Nombre</th>
+							<th class="tg-baqh">Icono</th>
+							<th class="tg-baqh">estado</th>
+							<th>Accion</th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				        <tr th:id="${modulo.idmodulo}" th:each="modulo: ${modulos}">
+							<td class="tg-0lax" th:text="${modulo.nombre}"/>
+							<td class="tg-0lax" th:text="${modulo.icono}"/>
+							<td class="tg-0lax" th:text="${modulo.estado}"/>
+							<td>
+							 	<a href="#" class="btn btn-primary btn-xs" title="Editar"><i class="fa fa-pencil"></i></a>
+								<a href="#" class="btn btn-info btn-xs" title="Cambiar estado"><i class="fa fa-refresh"></i></a>
+								<a href="#" class="btn btn-danger btn-xs" title="Eliminar"><i class="fa fa-trash-o"></i></a>
+							</td>
+
+					</tr>
+				    </tbody>
+				</table>
+				</div>
+			</div>
+		</div>
 	</div>
-<!-- /page content -->
+	
+	<!-- modals -->
+									<!-- Small modal -->
+									
+									<div id="modalModulo" class="modal fade" tabindex="-1"
+										role="dialog" aria-hidden="true">
+										<div class="modal-dialog modal-md">
+											<div class="modal-content">
+
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">×</span>
+													</button>
+													<h4 class="modal-title" id="myModalLabel2">Agregar
+														módulo</h4>
+												</div>
+												<div class="modal-body">
+													<form id="formModulo" class="form-horizontal form-label-left">
+														<div class="form-group">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12">Nombre:
+															</label>
+															<div class="col-md-6 col-sm-6 col-xs-12">
+																<input id="nombre" type="text" class="form-control"
+																	placeholder="Nombre de módulo" data-req="">
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12">Icono:
+															</label>
+															<div class="col-md-6 col-sm-6 col-xs-12">
+																<input id="icono" type="text" class="form-control"
+																	placeholder="Icono de módulo" data-req="">
+															</div>
+														</div>
+														<div class="form-group">
+															<label class="control-label col-md-3 col-sm-3 col-xs-12">Estado:
+															</label>
+															<div class="col-md-6 col-sm-6 col-xs-12">
+																<div class="btn-group" data-toggle="buttons">
+																	<label class="btn btn-default"
+																		data-toggle-class="btn-primary"
+																		data-toggle-passive-class="btn-default"> <input
+																		type="radio" id="inactivo" name="estado">
+																		&nbsp; Inactivo &nbsp;
+																	</label> <label class="btn btn-default"
+																		data-toggle-class="btn-primary"
+																		data-toggle-passive-class="btn-default"> <input
+																		type="radio" id="activo" name="estado"> Activo
+																	</label> <input type="hidden" id="estado" /> <input
+																		type="hidden" id="idmodulo" />
+																</div>
+															</div>
+														</div>
+														<div id="divMessage"></div>
+													</form>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">Cerrar</button>
+													<button id="btnGuardar" type="button"
+														class="btn btn-primary">Guardar cambios</button>
+												</div>
+
+											</div>
+										</div>
+									</div>
+									<!-- /modals -->
+	
+	<!-- END PAGE CONTENT -->
 </div>
 <!-- END PAGE CONTAINER -->
 <!-- BEGIN PRE-FOOTER -->
@@ -231,6 +337,47 @@
 
 <footer>
 <div th:replace="views/admin/layout/layout :: footer"></div>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+$(window).load(function() {
+	listarModulo();
+	 
+});
+
+function listarModulo() {
+
+
+	
+	$('.tablaEstablecimiento').DataTable({
+          "lengthMenu": [
+              [3, 50, 100, 200, -1],
+              [3, 50, 100, 200, "All"]
+          ],
+          // "pageLength": 25,
+          // "tablaEstablecimiento_length": 10,
+      });
+      // x = document.getElementById('dataTableProductoCantidadSalida_wrapper');
+      // x.children[1].style.marginTop = '1em';
+
+}
+
+$('#btnAgregar').click(function(e) {
+    e.preventDefault();
+    
+//     var path = $("#path").val();
+
+    var modalModulo = $('#modalModulo');
+//     modalModulo.find('form').attr('action', path + "/admin/modulo/registrar");
+//     modalModulo.find('.modal-header .modal-title').html($(this).attr('title'));
+    
+//     $('#idmodulo').val('0');
+//     $('#estado').val('0');
+
+    modalModulo.modal('show');
+});
+</script>
+
 </footer>
 </body>
 <!-- END BODY -->
