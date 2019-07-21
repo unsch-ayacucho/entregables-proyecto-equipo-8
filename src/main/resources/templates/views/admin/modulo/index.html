@@ -156,14 +156,33 @@
 	<!-- BEGIN PAGE CONTENT -->
 	<div class="page-content">
 	<div class="panel panel-default col-xs-12 col-sm-12 col-md-12" style="border: 0.05px solid #ECECEC;">
+  		<div class="x_panel">
+			<div class="x_title">
+				<h2>Opciones de administración</h2>
+			</div>
+			<div class="x_content">
+				<button id="btnAgregar" type="button" class="btn btn-primary" data-toggle="modal">Nuevo</button>
+  			</div>
+			
+		</div>
   		
-  		<div class="panel-body">
-  			<button id="btnAgregar" type="button" class="btn btn-primary" data-toggle="modal">Nuevo</button>
+  			
   		
-  		</div>
   			
   		<br>
-  		<div class="panel-body center-block " style="width:50%;">
+  		<div class="x_panel">
+			<div class="x_title">
+				<h2>
+					Listado de Módulos
+				</h2>
+			</div>
+  		<div class="alert alert-info alert-dismissible fade in" role="alert">
+             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+             </button>
+             <strong>En esta sección!</strong> Usted puede visualizar todos los módulos. Además, puede modificar, eliminar, cambiar de estado, buscar y ordenar.
+         </div>
+        </div>
+  		<div class="panel-body center-block " style="width:100%;">
 			<div class="table-responsive" id="panel-table-establecimiento">
 		      <table class="table table-bordered table-hover small tablaEstablecimiento" id="tablaEstablecimiento" style="width:100%">
 		
@@ -172,7 +191,7 @@
 				            <th class="tg-baqh">Nombre</th>
 							<th class="tg-baqh">Icono</th>
 							<th class="tg-baqh">estado</th>
-							<th>Accion</th>
+							<th>Acción</th>
 				        </tr>
 				    </thead>
 				    <tbody>
