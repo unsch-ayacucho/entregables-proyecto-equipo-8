@@ -27,13 +27,9 @@ public class LoginController {
 	@PostMapping("/login")
 	public String login(HttpServletRequest request, HttpSession session, Model model) {
 		model.addAttribute("user", new Usuario());
-		System.out.println("usuario ---- ");
-		System.out.println(request.getParameter("username"));
-		System.out.println(request.getParameter("password"));
-		
+	
 		Usuario user = this.usuarioService.login(request.getParameter("username"), request.getParameter("password"));
-		System.out.println("ester usuario");
-		System.out.println(user);
+
 		if (user == null) {
 			model.addAttribute("error", "Cuenta inválida");
 			return "redirect:/login";
@@ -43,4 +39,9 @@ public class LoginController {
 		}
 	}
 	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("usuario");
+		return "redirect:/login";
+	}
 }

@@ -17,7 +17,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Override
 	public Usuario login(String usuario, String password) {
-		System.out.println("error--------------");
 		return usuarioDao.login(usuario,password);
 		
 	}
