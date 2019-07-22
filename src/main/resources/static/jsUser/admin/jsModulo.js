@@ -62,7 +62,7 @@ $('#btnGuardar').click(function(e) {
 	}
 	console.log("entrando");
 	$.ajax({
-		url : "/admin/registrar-modulo",
+		url : "/admin/modulo/registrar",
 		data : JSON.stringify(enviarCategoria),
 		type : "POST",
 		dataType : 'json',
@@ -77,14 +77,23 @@ $('#btnGuardar').click(function(e) {
 	console.log("saliendo");
 // 		e.preventDefault();
 	alert("Modulo registrado");
-	document.location.href = "/admin/lista-modulos";
+	document.location.href = "/admin/modulo/listar";
 });
 
 function eliminarModulo(id){
 	
 	if(confirm("Desea eliminar el modulo?")){
 		
-		document.location.href="/admin/eliminar/"+id;
+		document.location.href="/admin/modulo/eliminar/"+id;
 	}
 	
-} 
+}
+
+function estadoModulo(id){
+	
+	if(confirm("Desea cambiar el estado del modulo?")){
+		
+		document.location.href="/admin/modulo/estado/"+id;
+	}
+	
+}

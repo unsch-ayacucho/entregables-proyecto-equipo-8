@@ -36,7 +36,7 @@ public class ModuloController {
 	
 	private JsonResponse jsonResponse;
 	
-    @GetMapping("/lista-modulos")
+    @GetMapping("/modulo/listar")
     public String lista(Model model) {
     	
     	List<Modulo> modulos = moduloService.listarModulos();
@@ -52,7 +52,7 @@ public class ModuloController {
     	return "views/admin/modulo/index";
     }
     
-    @PostMapping("/registrar-modulo")
+    @PostMapping("/modulo/registrar")
     @ResponseBody
     public JsonResponse registrarModulo(@RequestBody Modulo modulo) {
 	    try {
@@ -72,16 +72,16 @@ public class ModuloController {
 //	}
 	
     
-    @RequestMapping("/eliminar/{idmodulo}")
+    @RequestMapping("/modulo/eliminar/{idmodulo}")
 	public String eliminarModulo(@PathVariable("idmodulo") Integer idmodulo) {
 		this.moduloService.eliminar(idmodulo);
-		return "redirect:/admin/lista-modulos/";
+		return "redirect:/admin/modulo/listar";
 	}
  
-    @RequestMapping("/estado/{idmodulo}")
+    @RequestMapping("/modulo/estado/{idmodulo}")
 	public String cambiarEstado(@PathVariable("idmodulo") Integer idmodulo) {
 		this.moduloService.cambiarEstado(idmodulo);
-		return "redirect:/admin/lista-modulos/";
+		return "redirect:/admin/modulo/listar";
 	}
     
 }
