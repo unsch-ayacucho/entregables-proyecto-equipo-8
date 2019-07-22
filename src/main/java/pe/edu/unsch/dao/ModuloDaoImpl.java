@@ -45,4 +45,16 @@ public class ModuloDaoImpl implements ModuloDao {
 	public void insertar(Modulo modulo) {
 		entityManager.persist(modulo);
 	}
+	
+	public Modulo buscar(Integer id) {
+		return (Modulo) entityManager.find(Modulo.class, id);
+	}
+	
+	@Override
+	public void eliminar(Integer id) {
+		Modulo modulo =  entityManager.find(Modulo.class, id);
+	    if (modulo != null) {
+	      entityManager.remove(modulo);
+	    }
+	}
 }

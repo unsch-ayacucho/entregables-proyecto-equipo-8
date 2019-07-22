@@ -79,3 +79,9 @@ $('#btnGuardar').click(function(e) {
 	alert("Modulo registrado");
 	document.location.href = "/admin/lista-modulos";
 });
+
+function eliminarModulo(id){
+	
+	alert(id);
+	
+} 

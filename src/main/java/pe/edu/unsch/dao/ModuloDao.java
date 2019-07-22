@@ -11,5 +11,9 @@ public interface ModuloDao {
 	public List<Modulo> listarModulos();
 	
 	public void insertar(Modulo modulo);
+	
+	public Modulo buscar(Integer id);
+	
+	public void eliminar(Integer id);
 
 }

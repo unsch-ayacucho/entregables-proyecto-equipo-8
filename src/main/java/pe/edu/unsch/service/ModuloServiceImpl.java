@@ -33,4 +33,14 @@ public class ModuloServiceImpl implements ModuloService {
 	public void insertar(Modulo modulo) {
 		moduloDao.insertar(modulo);
 	}
+	
+	@Override
+	public Modulo buscar(Integer id) {
+		return moduloDao.buscar(id);
+	}
+	
+	@Override
+	public void eliminar(Integer id) {
+		moduloDao.eliminar(id);
+	}
 }
