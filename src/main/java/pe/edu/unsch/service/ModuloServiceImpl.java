@@ -43,4 +43,9 @@ public class ModuloServiceImpl implements ModuloService {
 	public void eliminar(Integer id) {
 		moduloDao.eliminar(id);
 	}
+	
+	@Override
+	public void actualizar(Modulo modulo) {
+		moduloDao.actualizar(modulo);
+	}
 }

@@ -16,4 +16,5 @@ public interface ModuloService {
 	
 	public void eliminar(Integer id);
 	
+	public void actualizar(Modulo modulo);
 }

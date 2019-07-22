@@ -31,9 +31,21 @@ $('#btnAgregar').click(function(e) {
     
 //     $('#idmodulo').val('0');
 //     $('#estado').val('0');
-
+    
+    limpiarModal();
     modalModulo.modal('show');
 });
+
+function limpiarModal(){
+	$('#btnGuardar').html('Guardar cambios');
+    $('#btnGuardar').attr('class','btn btn-primary');
+    $('#estado').val('');
+    $('#nombre').val('');
+    $('#icono').val('');
+    $('#idmodulo').val('');
+	$('#inactivo').parent().removeClass('btn-primary');
+	$('#activo').parent().removeClass('btn-primary');
+}
 
 $('input:radio').change(function() {
 	if ($("#activo").prop("checked")) {
@@ -50,7 +62,7 @@ $('input:radio').change(function() {
 $('#btnGuardar').click(function(e) {
 	var frm = $('#modalModulo form');
 	var enviarCategoria = {
-		idcategoria : $('#idmodulo').val(),
+		idmodulo : $('#idmodulo').val(),
 		nombre : $('#nombre').val(),
 		icono : $('#icono').val(),
 		estado : $('#estado').val()
@@ -61,22 +73,41 @@ $('#btnGuardar').click(function(e) {
 		return;
 	}
 	console.log("entrando");
-	$.ajax({
-		url : "/admin/modulo/registrar",
-		data : JSON.stringify(enviarCategoria),
-		type : "POST",
-		dataType : 'json',
-		contentType : 'application/json',
-		success : function(dataResponse) {
-		$('#formModulo').trigger("reset");
-		if (jsonToDivError(dataResponse, '#modalModulo #divMessage', path)) {
-		recargarModulos();
-		}
-		}
+	if($('#btnGuardar').text() == 'Guardar cambios'){
+		$.ajax({
+			url : "/admin/modulo/registrar",
+			data : JSON.stringify(enviarCategoria),
+			type : "POST",
+			dataType : 'json',
+			contentType : 'application/json',
+			success : function(dataResponse) {
+			$('#formModulo').trigger("reset");
+				if (jsonToDivError(dataResponse, '#modalModulo #divMessage', path)) {
+					recargarModulos();
+				}
+			}
 		});
+		alert("Modulo registrado");
+	}else{
+		$.ajax({
+			url : "/admin/modulo/actualizar",
+			data : JSON.stringify(enviarCategoria),
+			type : "POST",
+			dataType : 'json',
+			contentType : 'application/json',
+			success : function(dataResponse) {
+			$('#formModulo').trigger("reset");
+				if (jsonToDivError(dataResponse, '#modalModulo #divMessage', path)) {
+					recargarModulos();
+				}
+			}
+		});
+		alert("Modulo actualizado");
+	}
+	
 	console.log("saliendo");
 // 		e.preventDefault();
-	alert("Modulo registrado");
+	
 	document.location.href = "/admin/modulo/listar";
 });
 
@@ -96,4 +127,37 @@ function estadoModulo(id){
 		document.location.href="/admin/modulo/estado/"+id;
 	}
 	
+}
+
+function editarModulo(id){
+
+    $('#'+id).children("td").each(function (index) {
+        switch (index) {
+            case 0:
+                $('#nombre').val($(this).text());
+                break;
+            case 1:
+            	$('#icono').val($(this).text());
+                break;
+            case 2:
+            	estado = $(this).text();
+            	if(estado==1){
+            		$('#estado').val('1');
+            		$('#activo').parent().addClass('btn-primary');
+            		$('#inactivo').parent().removeClass('btn-primary');
+            	}else{
+            		$('#estado').val('0');
+            		$('#inactivo').parent().addClass('btn-primary');
+            		$('#activo').parent().removeClass('btn-primary');
+            	}
+                break;
+        }
+
+    });
+    $('#idmodulo').val(id);
+    var modalModulo = $('#modalModulo');
+    $('#btnGuardar').html('Actualizar cambios');
+    $('#btnGuardar').attr('class','btn btn-warning');
+    modalModulo.modal('show');
+
 }

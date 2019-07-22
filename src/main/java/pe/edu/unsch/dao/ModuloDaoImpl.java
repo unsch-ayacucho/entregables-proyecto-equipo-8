@@ -44,6 +44,8 @@ public class ModuloDaoImpl implements ModuloDao {
 	
 	@Override
 	public void insertar(Modulo modulo) {
+		System.out.println("moodlgffdfo------");
+		System.out.println(modulo);
 		entityManager.persist(modulo);
 	}
 	
@@ -70,5 +72,16 @@ public class ModuloDaoImpl implements ModuloDao {
 	    if (modulo != null) {
 	      entityManager.remove(modulo);
 	    }
+	}
+	
+	@Override
+	public void actualizar(Modulo modulo) {
+		entityManager.createQuery(
+			      "UPDATE Modulo SET nombre=:nombre, icono=:icono, estado=:estado where idmodulo=:modulo").
+				setParameter("modulo", modulo.getIdmodulo()).
+				setParameter("nombre", modulo.getNombre()).
+				setParameter("icono", modulo.getIcono()).
+				setParameter("estado", modulo.getEstado()).
+				executeUpdate();
 	}
 }

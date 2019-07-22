@@ -83,5 +83,18 @@ public class ModuloController {
 		this.moduloService.cambiarEstado(idmodulo);
 		return "redirect:/admin/modulo/listar";
 	}
+  
+    @PostMapping("/modulo/actualizar")
+    @ResponseBody
+    public JsonResponse actualizarModulo(@RequestBody Modulo modulo) {
+	    try {
+	    	moduloService.actualizar(modulo);
+	    	jsonResponse = new JsonResponse();
+	    	jsonResponse.respuestaInsertar();
+	    } catch (Exception e) {
+	    	e.getMessage();
+	    }
+    	return jsonResponse;
+    }
     
 }

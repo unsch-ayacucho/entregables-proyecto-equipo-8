@@ -48,7 +48,7 @@ public class LoginController {
 			
 			session.setAttribute("submodulosPorPerfil", submoduloService.listarPorPerfil(user.getUsuario()));
 			
-			return "redirect:/admin/home";
+			return "redirect:/admin/modulo/listar";
 		}
 	}
 	
