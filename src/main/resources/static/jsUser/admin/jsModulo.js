@@ -82,6 +82,9 @@ $('#btnGuardar').click(function(e) {
 
 function eliminarModulo(id){
 	
-	alert(id);
+	if(confirm("Desea eliminar el modulo?")){
+		
+		document.location.href="/admin/eliminar/"+id;
+	}
 	
 } 

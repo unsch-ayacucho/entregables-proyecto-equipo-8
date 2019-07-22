@@ -65,28 +65,22 @@ public class ModuloController {
     	return jsonResponse;
     }
     
-    @GetMapping("/modulo/{id}")
-	public String detalle(@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("modulo", moduloService.buscar(id));
-		return "views/admin/modulo/index";
-	}
+//    @GetMapping("/modulo/{id}")
+//	public String detalle(@PathVariable("id") Integer id, Model model) {
+//		model.addAttribute("modulo", moduloService.buscar(id));
+//		return "views/admin/modulo/index";
+//	}
 	
-    @RequestMapping(value="/eliminar", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity EliminarModulo(@RequestParam(value = "id") Integer id) {
-	    String mensaje;
-    	try {
-	    	moduloService.eliminar(id);
-	    	mensaje = "éxito";
-	    } catch (Exception e) {
-	    	mensaje = e.getMessage();
-	    }
-    	return new ResponseEntity( HttpStatus.OK);
-    }
     
     @RequestMapping("/eliminar/{idmodulo}")
-	public String removeExp(@PathVariable("idmodulo") Integer idmodulo) {
+	public String eliminarModulo(@PathVariable("idmodulo") Integer idmodulo) {
 		this.moduloService.eliminar(idmodulo);
+		return "redirect:/admin/lista-modulos/";
+	}
+ 
+    @RequestMapping("/estado/{idmodulo}")
+	public String cambiarEstado(@PathVariable("idmodulo") Integer idmodulo) {
+		this.moduloService.cambiarEstado(idmodulo);
 		return "redirect:/admin/lista-modulos/";
 	}
     

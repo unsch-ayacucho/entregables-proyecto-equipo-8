@@ -35,8 +35,8 @@ public class ModuloServiceImpl implements ModuloService {
 	}
 	
 	@Override
-	public Modulo buscar(Integer id) {
-		return moduloDao.buscar(id);
+	public void cambiarEstado(Integer id) {
+		moduloDao.cambiarEstado(id);
 	}
 	
 	@Override

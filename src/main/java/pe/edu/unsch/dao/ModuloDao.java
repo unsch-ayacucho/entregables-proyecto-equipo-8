@@ -12,7 +12,7 @@ public interface ModuloDao {
 	
 	public void insertar(Modulo modulo);
 	
-	public Modulo buscar(Integer id);
+	public void cambiarEstado(Integer id);
 	
 	public void eliminar(Integer id);
 

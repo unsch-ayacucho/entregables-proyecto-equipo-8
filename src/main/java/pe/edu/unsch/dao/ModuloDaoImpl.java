@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import pe.edu.unsch.entities.Modulo;
@@ -46,8 +47,12 @@ public class ModuloDaoImpl implements ModuloDao {
 		entityManager.persist(modulo);
 	}
 	
-	public Modulo buscar(Integer id) {
-		return (Modulo) entityManager.find(Modulo.class, id);
+	@Override
+	public void cambiarEstado(Integer id) {
+		entityManager.createQuery(
+			      "UPDATE Modulo SET estado = 0 where idmodulo=:modulo").
+				setParameter("modulo", id).
+				executeUpdate();
 	}
 	
 	@Override
