@@ -52,17 +52,15 @@ public class ModuloDaoImpl implements ModuloDao {
 	@Override
 	public void cambiarEstado(Integer id) {
 		Modulo modulo =  entityManager.find(Modulo.class, id);
+		byte estado = 0;
 		if (modulo.getEstado() == 0) {
-			entityManager.createQuery(
-				      "UPDATE Modulo SET estado = 1 where idmodulo=:modulo").
-					setParameter("modulo", id).
-					executeUpdate();
-		}else {
-			entityManager.createQuery(
-				      "UPDATE Modulo SET estado = 0 where idmodulo=:modulo").
-					setParameter("modulo", id).
-					executeUpdate();
+			estado=1;	
 		}
+		entityManager.createQuery(
+			      "UPDATE Modulo SET estado =:estado where idmodulo=:modulo").
+				setParameter("estado",estado).
+				setParameter("modulo", id).
+				executeUpdate();
 	}
 	
 	@Override
