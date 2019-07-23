@@ -44,8 +44,6 @@ public class ModuloDaoImpl implements ModuloDao {
 	
 	@Override
 	public void insertar(Modulo modulo) {
-		System.out.println("moodlgffdfo------");
-		System.out.println(modulo);
 		entityManager.persist(modulo);
 	}
 	

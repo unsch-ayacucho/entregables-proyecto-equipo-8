@@ -20,4 +20,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return usuarioDao.login(usuario,password);
 		
 	}
+
+	@Override
+	public Usuario detalle(String usuario) {
+		return usuarioDao.detalle(usuario);
+	}
+	
 }

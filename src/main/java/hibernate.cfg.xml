@@ -29,7 +29,7 @@
 		  <mapping class="pe.edu.unsch.entities.SolicitudBorradora"/>
 		  <mapping class="pe.edu.unsch.entities.SolicitudPlanTesis"/>
 		  <mapping class="pe.edu.unsch.entities.SolicitudSustentacion"/>
-		  <mapping class="pe.edu.unsch.entities.SolicitudAsesoramiento"/>
+		  <mapping class="pe.edu.unsch.entities.SolucitudAsesoramiento"/>
 		  <mapping class="pe.edu.unsch.entities.Bachiller"/>
     </session-factory>
 </hibernate-configuration>

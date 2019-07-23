@@ -40,13 +40,6 @@ public class ModuloController {
     public String lista(Model model) {
     	
     	List<Modulo> modulos = moduloService.listarModulos();
-    	
-    	/*Proveedor chinaPro = new Proveedor(1, "ChinChing Co.", "Beijing", "China");
-    	Proveedor peruPro = new Proveedor(1, "El Chinito del Tractor S.R.L.", "Lima", "Perú");
-    	
-    	productos.add(new Producto(1, chinaPro, "Memoría RAM 8GB", 505.5f, 20));
-    	productos.add(new Producto(2, peruPro, "Procesador AMD A4", 420.3f, 5));*/
-    	
         model.addAttribute("modulos", modulos);
     	
     	return "views/admin/modulo/index";
@@ -64,13 +57,6 @@ public class ModuloController {
 	    }
     	return jsonResponse;
     }
-    
-//    @GetMapping("/modulo/{id}")
-//	public String detalle(@PathVariable("id") Integer id, Model model) {
-//		model.addAttribute("modulo", moduloService.buscar(id));
-//		return "views/admin/modulo/index";
-//	}
-	
     
     @RequestMapping("/modulo/eliminar/{idmodulo}")
 	public String eliminarModulo(@PathVariable("idmodulo") Integer idmodulo) {

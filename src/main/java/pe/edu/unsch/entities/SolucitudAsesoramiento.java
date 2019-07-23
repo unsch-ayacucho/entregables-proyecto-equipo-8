@@ -32,6 +32,10 @@ public class SolucitudAsesoramiento implements java.io.Serializable {
 	public SolucitudAsesoramiento() {
 	}
 
+	public SolucitudAsesoramiento(String estado ) {
+		this.estado = estado;
+	}
+	
 	public SolucitudAsesoramiento(Bachiller bachiller, Docente docente, Solicitud solicitud) {
 		this.bachiller = bachiller;
 		this.docente = docente;

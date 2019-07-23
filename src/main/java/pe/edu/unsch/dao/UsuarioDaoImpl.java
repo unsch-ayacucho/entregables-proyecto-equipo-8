@@ -5,6 +5,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
+import pe.edu.unsch.entities.Modulo;
 import pe.edu.unsch.entities.Usuario;
 
 @Repository("usuarioDao")
@@ -23,5 +24,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
 						.getSingleResult();
 	}
 	
+	public Usuario detalle(String usuario) {
+		return (Usuario) entityManager.find(Usuario.class, usuario);
+	}
 	
 }

@@ -6,4 +6,5 @@ public interface UsuarioDao {
 
 	public Usuario login(String usuario, String password);
 	
+	public Usuario detalle(String usuario);
 }
