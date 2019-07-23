@@ -200,7 +200,7 @@
 							<td class="tg-0lax" th:text="${asesorado.solicitud.nombre}"/>
 							<td class="tg-0lax" th:text="${asesorado.estado}"/>
 							<td>
-							 	<a class="btn btn-primary btn-xs" title="Editar"  th:onclick="@{ editarAsesoramiento+'('+${asesorado.idsolucitudAsesoramiento} + ');'}" ><i class="fa fa-pencil"></i></a>
+							 	<a class="btn btn-primary btn-xs" title="Responder solicitud"  th:onclick="@{ editarAsesoramiento+'('+${asesorado.idsolucitudAsesoramiento} + ');'}" ><i class="fa fa-pencil"></i></a>
 								<a class="btn btn-info btn-xs" title="Cambiar estado" ><i class="fa fa-refresh" th:onclick="@{ revertirAsesoramiento+'('+${asesorado.idsolucitudAsesoramiento} + ');'}" ></i></a>
 <!-- 								<a class="btn btn-danger btn-xs" title="Eliminar" ><i class="fa fa-trash-o"></i></a> -->
 							</td>
@@ -226,8 +226,7 @@
 														aria-label="Close">
 														<span aria-hidden="true">×</span>
 													</button>
-													<h4 class="modal-title" id="myModalLabel2">Agregar
-														módulo</h4>
+													<h4 class="modal-title" id="myModalLabel2">Responder solicitud</h4>
 												</div>
 												<div class="modal-body">
 													<form id="formModulo" class="form-horizontal form-label-left">
